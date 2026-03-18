@@ -75,7 +75,12 @@ const Hero = () => {
 
       // Wait for video metadata so duration is available, then tween currentTime 0 → duration
       videoRef.current.onloadedmetadata = () => {
+        // `onloadedmetadata` fires once the video knows its `duration`.
+        // We need that duration so we can map scroll progress -> playback time.
+
         tl.to(videoRef.current, {
+          // As the timeline progresses (scrubbed by scroll), GSAP will update:
+          // `video.currentTime` from its current value (typically 0) to `duration`.
           currentTime: videoRef.current.duration,
         });
       };

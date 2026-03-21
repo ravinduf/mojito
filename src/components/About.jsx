@@ -25,7 +25,7 @@ const About = () => {
 
     // 2) Reveal the image grid blocks after the title starts
     // "-=0.5" overlaps this animation so it begins 0.5s before the previous one finishes
-    .from('.top-grid div, .botom-grid div', {
+    .from('.top-grid div, .bottom-grid div', {
       opacity: 0, duration: 1, ease: "power1.inOut", stagger: 0.04
     }, "-=0.5")
   })

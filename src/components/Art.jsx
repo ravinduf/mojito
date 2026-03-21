@@ -13,10 +13,15 @@ const Art = () => {
 
     const maskTimeline = gsap.timeline({
       scrollTrigger: {
+        // Element whose scroll position defines when this ScrollTrigger is active (start/end are relative to it).
         trigger: '#art',
+        // When the scroll-linked range begins: `start` above is mobile `top 20%` vs desktop `top top` (trigger vs viewport).
         start,
+        // When the range ends: when the bottom of `#art` hits the vertical center of the viewport.
         end: 'bottom center',
+        // Tie the timeline progress to scroll; `1.5` seconds of smoothing so motion lags the scrollbar slightly.
         scrub: 1.5,
+        // Keep `#art` fixed in place for the duration of start→end so the scrubbed animation plays while user scrolls.
         pin: true
       }})
       

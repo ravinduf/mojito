@@ -15,14 +15,15 @@ const Cocktails = () => {
     }
    });
 
-   parallaxTimeline.from("#c-left-leaf", {
-    x: -100, y: 100,
-   }).from("#c-right-leaf", {
-    x: 100, y: 100,
-   })
-
-   
+   parallaxTimeline
+    .from("#c-left-leaf", {
+      x: -100, y: 100,
+    })
+    .from("#c-right-leaf", {
+      x: 100, y: 100,
+    })
   })
+
   return (
     <section id="cocktails" className="noisy">
       <img src="/images/cocktail-left-leaf.png" alt="l-leaf" id="c-left-leaf" />
@@ -49,15 +50,17 @@ const Cocktails = () => {
           <h2>Most loved mocktails:</h2>
 
           <ul>
-            {mockTailLists.map(({ name, country, detail, price }) => (
-              <li key={name}>
-                <div className="me-28">
-                  <h3>{name}</h3>
-                  <p>{country} | {detail}</p>
-                </div>
-                <span>- {price}</span>
-              </li>
-            ))}
+            {mockTailLists.map(({ name, country, detail, price }) => {
+              return (
+                <li key={name}>
+                  <div className="me-28">
+                    <h3>{name}</h3>
+                    <p>{country} | {detail}</p>
+                  </div>
+                  <span>- {price}</span>
+                </li>
+              )
+            })}
           </ul>
         </div>
       </div>

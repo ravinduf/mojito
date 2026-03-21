@@ -15,6 +15,7 @@ const About = () => {
       scrollTrigger: {
         trigger: '#about',       // Element that triggers the scroll-based animation
         start: 'top center',     // Start when #about's top reaches the viewport center
+        scrub: true,
       }
     })
 
@@ -23,11 +24,23 @@ const About = () => {
       opacity: 0, duration: 1, yPercent: 100, ease: 'expo.out', stagger: 0.02
     })
 
-    // 2) Reveal the image grid blocks after the title starts
-    // "-=0.5" overlaps this animation so it begins 0.5s before the previous one finishes
-    .from('.top-grid div, .bottom-grid div', {
-      opacity: 0, duration: 1, ease: "power1.inOut", stagger: 0.04
-    }, "-=0.5")
+    // // 2) Reveal the image grid blocks after the title starts
+    // // "-=0.5" overlaps this animation so it begins 0.5s before the previous one finishes
+    // .from('.top-grid div, .bottom-grid div', {
+    //   opacity: 0, duration: 1, ease: "power1.inOut", stagger: 0.02
+    // }, "-=0.5")
+
+    const gridTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#grid',
+        start: 'top 80%',
+        scrub: true,
+      }
+    })
+    
+    gridTimeline.from('.top-grid div, .bottom-grid div', {
+      opacity: 0, duration: 1, ease: "power1.inOut", stagger: 0.02
+    })
   })
   return (
     <section id="about">
@@ -57,7 +70,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className='top-grid'>
+        <div className='top-grid mt-16' id="grid">
 
           <div className="md:col-span-3">
             <div className='noisy' />
